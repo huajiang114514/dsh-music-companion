@@ -10,7 +10,7 @@
 param(
     [int]$Interval = 3,
     [switch]$Once,
-    [string]$AppMatch = 'QQMusic|CloudMusic|Spotify|foobar|Music|Groove'
+    [string]$AppMatch = 'QQMusic'
 )
 
 $ErrorActionPreference = 'Continue'
@@ -39,9 +39,8 @@ function Read-Current {
         $sessions = @($mgr.GetSessions())
         if ($sessions.Count -eq 0) { return $null }
         $pick = $sessions | Where-Object { $_.SourceAppUserModelId -match $AppMatch } | Select-Object -First 1
-        if (-not $pick) {
-            $pick = $sessions | Where-Object { $_.GetPlaybackInfo().PlaybackStatus -eq 'Playing' } | Select-Object -First 1
-        }
+        # ⚠ 不再「退而求其次挑正在播放的那个」：B 站客户端、Edge 里的视频也会占用媒体会话，
+        #    那样每切一个视频都会被当成换歌。只认 $AppMatch 里点名的播放器。
         if (-not $pick) { return $null }
         $props = Await ($pick.TryGetMediaPropertiesAsync()) $propsType
         $info = $pick.GetPlaybackInfo()
