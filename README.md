@@ -24,14 +24,19 @@
 ## 安装
 
 ```bash
-# 本地开发 / 从文件夹装
-dsh plugin --profile desktop add "link:C:\path\to\dsh-music-companion"
+# 直接从 GitHub 装（推荐，不需要 npm）
+dsh plugin --profile desktop add "github:huajiang114514/dsh-music-companion"
 
-# 发布之后
-dsh plugin --profile desktop add dsh-music-companion
+# 或者用 Release 里的 tgz
+dsh plugin --profile desktop add "file:C:\path\dsh-music-companion-0.1.0.tgz"
+
+# 本地改代码用 link
+dsh plugin --profile desktop add "link:C:\path\to\dsh-music-companion"
 ```
 
 装完在 `~/.dsh/music-companion.json` 里写配置（不写也能跑，用默认值），重启 DSH 生效。
+
+> 这个包没有发到 npm，所以 `add dsh-music-companion` 会 404，用上面的 GitHub / tgz 写法。
 
 ## 配置
 
@@ -71,25 +76,21 @@ dsh plugin --profile desktop add dsh-music-companion
 
 ## 分享 / 发布
 
-这个目录本身就是一个可发布的 npm 包：
+这个目录本身就是一个 DSH 插件包，三种分发方式都行：
 
 ```bash
-cd dsh-music-companion
-npm pack                 # 出一个 .tgz，直接发给别人
-# 或者
+# 1. Git 仓库（当前用的）
+dsh plugin --profile desktop add "github:huajiang114514/dsh-music-companion"
+
+# 2. 打成 tgz 发给别人
+npm pack
+dsh plugin --profile desktop add "file:C:\path\dsh-music-companion-0.1.0.tgz"
+
+# 3. 以后想发 npm 也行（需要账号开 2FA）
 npm publish --access public
 ```
 
-别人装的时候：
-
-```bash
-dsh plugin --profile desktop add dsh-music-companion
-# 或者拿到 tgz：
-dsh plugin --profile desktop add "file:C:\path\dsh-music-companion-0.1.0.tgz"
-```
-
-想放 GitHub 也行——`package.json` 里补 `repository` 字段，别人可以
-`dsh plugin --profile desktop add "github:<you>/dsh-music-companion"`。
+如果哪天发了 npm，别人就可以直接 `dsh plugin --profile desktop add dsh-music-companion`。
 
 ## 卸载
 
