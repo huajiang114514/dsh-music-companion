@@ -1,0 +1,7 @@
+# DSH「陪听」——把 Windows 上正在放的歌，变成她会接的一句话。
+# 这一行同时激活「宿主半边」（lib/index.js）。
+#
+# ⚠ id 就是设置/日志那边的命名空间；改名的话，lib/index.js 里的日志前缀也跟着改。
+- insert:
+    - id: music-companion
+      name: 'dsh-music-companion'
