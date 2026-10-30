@@ -1,6 +1,6 @@
 {
   "name": "dsh-music-companion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "陪听：盯着 Windows 的系统媒体会话（QQ音乐/网易云/Spotify 挂后台都行），一换歌就往 DSH 的会话里推一句“话头”，让她讲讲自己的感受，同时记一份听歌流水和口味画像。",
   "license": "MIT",
   "type": "module",
