@@ -12,19 +12,19 @@
 ## 效果
 
 ```
-[10-30 11:47:23] 推出去了：《逍遥仙》- 三无Marblue
+[20:15:07] 推出去了：《一首歌》- 某位歌手
 ```
 
-她收到的不是"用户说：我在听逍遥仙"，而是：
+她收到的不是"用户说：我在听某首歌"，而是：
 
-> （耳机里换歌了：《逍遥仙》- 三无Marblue。你就当自己也戴着同一副耳机——说一句你此刻真实的感受或者评价就好，
+> （耳机里换歌了：《一首歌》- 某位歌手。你就当自己也戴着同一副耳机——说一句你此刻真实的感受或者评价就好，
 > 别复述歌名、也别问"你在听什么"。要是有想吐槽的、或者想起点什么，就直说。说完顺手把这一句感受追到
 > ~/.dsh/music-diary.md 里……）
 
 ## 安装
 
 ```bash
-# 直接从 GitHub 装（推荐，不需要 npm）
+# 直接从 GitHub 装（推荐）
 dsh plugin --profile desktop add "github:huajiang114514/dsh-music-companion"
 
 # 或者用 Release 里的 tgz
@@ -35,8 +35,6 @@ dsh plugin --profile desktop add "link:C:\path\to\dsh-music-companion"
 ```
 
 装完在 `~/.dsh/music-companion.json` 里写配置（不写也能跑，用默认值），重启 DSH 生效。
-
-> 这个包没有发到 npm，所以 `add dsh-music-companion` 会 404，用上面的 GitHub / tgz 写法。
 
 ## 配置
 
@@ -74,28 +72,10 @@ dsh plugin --profile desktop add "link:C:\path\to\dsh-music-companion"
   不想要那条线的话，在转发插件里关掉这个会话，或者让音乐话题走另一个会话。
 - 成本：按 DeepSeek 的价格，一次开口大约一分钱（上下文绝大部分命中缓存）。
 
-## 分享 / 发布
-
-这个目录本身就是一个 DSH 插件包，三种分发方式都行：
-
-```bash
-# 1. Git 仓库（当前用的）
-dsh plugin --profile desktop add "github:huajiang114514/dsh-music-companion"
-
-# 2. 打成 tgz 发给别人
-npm pack
-dsh plugin --profile desktop add "file:C:\path\dsh-music-companion-0.1.0.tgz"
-
-# 3. 以后想发 npm 也行（需要账号开 2FA）
-npm publish --access public
-```
-
-如果哪天发了 npm，别人就可以直接 `dsh plugin --profile desktop add dsh-music-companion`。
-
 ## 卸载
 
 ```bash
 dsh plugin --profile desktop remove dsh-music-companion
 ```
 
-`~/.dsh/music-history.jsonl` 和 `music-diary.md` 不会被删——那是你的听歌史，留着吧。
+`~/.dsh/music-history.jsonl` 和 `music-diary.md` 不会被删——那是听歌记录，留着比删掉有用。
